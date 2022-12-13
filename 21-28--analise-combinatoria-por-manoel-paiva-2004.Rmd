@@ -1,0 +1,268 @@
+# Análise Combinatória (Manoel Paiva, Vol 2, 2004)
+
+```{r carregaBibliotecas,echo=FALSE}
+library(datasets);
+library(kableExtra);
+library(magrittr); #Necessário para usar o operator de pipeline %>%
+library(DiagrammeR);
+```
+
+Neste capítulo estarão contidos os resumos de **Análise Combinatória** de do livro de Matemática - Volume 2, do autor Manoel Paiva, 1º edição, 2004, da editora Moderna.
+
+```{r carregaImagemCapaLivro,echo=FALSE, fig.show="hold", out.width="50%", fig.align = "center", fig.cap="Livro - Matemática Vol 3 - Manoel Paiva, 2004 (Ed. Moderna, 1.ed.)"}
+knitr::include_graphics("imagens/Capa-Livro-Matematica-Volume-2-Manoel-Paiva-2004.png")
+```
+
+|Capítulo|Descrição|
+|:--:|:--:|
+| 21 | Análise combinatória - métodos de contagem |
+| 22 | Princípio aditivo da contagem |
+| 23 | Arranjo simples |
+| 24 | Fatorial |
+| 25 | Permutação simples |
+| 26 | Permutação com elementos repetidos |
+| 27 | Combinação simples |
+| 27-X | Combinação com elementos Repetidos |
+| 28 | Permutação circular |
+
+
+## Capítulo 21 - Análise combinatória (Métodos de contagem)
+
+### Introdução
+
+Contar é uma necessidade cotidiana. Contamos a quantidade de frutas em um cesto, a quantidade de livros em uma estante, a quantidade de habitantes em uma cidade, etc.
+
+Existem quantidades que não são tão fáceis de contar tais como quantos números de telefones que podemos obter com 8 dígitos, a quantidade de placas de automóveis que podemos obter com 3 letras seguidas de 4 algarismos.
+
+A análise combinatória é a parte da matemática que estabelece métodos para contar nesses casos mais difíceis (**métodos de contagem**).
+
+### Princípio Fundamental da Contagem
+
+SE um experimento **A** apresenta **n** resultados distintos e um experimento **B** apresenta **k** resultados distintos, ENTÃO o experimento composto **A e B**, nessa ordem, apresenta $n \times k$  resultados distintos.
+
+#### Exemplos de Experimentos {-}
+
+1. Jogar um dado de 6 lados (Experimento simples: 1 experimento);
+2. Jogar uma moeda (Experimento simples: 1 experimento);
+3. Jogar um dado de 6 lados e em seguinda jogar uma moeda, nessa ordem (Experimento composto: 2 experimentos);
+4. Jogar um dado de 6 lados, uma moeda e em seguida retirar uma bola de uma urna com 4 bolas das cores vermelho, preto, azul e amarela (Experimento composto: 3 experimentos);
+
+
+#### Formas de Demonstrar Experimentos {-}
+
+##### Matríz de Possibilidades
+
+Podemos demonstrar todos os resultados possíveis de um experimento simples ou composto construindo uma uma matriz de possibilidades.
+
+###### Experimento Simples
+
+Para um **experimento simples** de jogar um dado de 6 faces:
+
+```{r tabela3, echo=FALSE}
+data.frame(Jogada = paste("Face", 1:6)) %>%
+kbl(caption="Exemplo - Resultados possíveis do Experimento - Jogar um dado de 6 faces", booktabs = TRUE) %>%
+footnote(general_title = "Fonte: ", footnote_as_chunk = TRUE,general = "Paiva (2004, pág. 154)") %>%
+kable_styling(latex_options = "striped");
+```
+
+###### Experimento Composto ( dois experimentos )
+
+Para um **experimento composto**, contendo dois experimentos: (A) Jogar um dado de 6 faces e (B) jogar uma moeda.
+
+
+1. Construímos uma matriz com as **n** linhas contendo os elementos do experimento **A**;
+2. Adicionamos **k** colunas contendo os elementos do experimento **B**.
+
+```{r tabela1,echo=FALSE}
+tab1 <- data.frame(ExperimentoA=paste("Face", 1:6), "ExperimentoB(C)" = paste("(",1:6,",","C",")"), "ExperimentoB(K)" = paste("(",1:6,",","K",")"));
+
+kbl(tab1, caption="Exemplo - Resultado do Experimento - Jogar um dado de 6 faces e jogar uma moeda", booktabs = TRUE) %>%
+footnote(general_title = "Fonte: ", footnote_as_chunk = TRUE,general = "Paiva (2004, pág. 154)") %>%
+kable_styling(latex_options = "striped");
+```
+
+Logo, os resultados possíveis são:
+
+```{r echo=FALSE}
+
+data.frame(Resultados=c(paste("(",1:6,",","C",")"),paste("(",1:6,",","K",")"))) %>%
+kbl(caption="Exemplo - Lista de Resultados do Experimento - Jogar um dado de 6 faces e jogar uma moeda", booktabs = TRUE) %>%
+footnote(general_title = "Fonte: ", footnote_as_chunk = TRUE,general = "Paiva (2004, pág. 154)") %>%
+kable_styling(latex_options = "striped");
+```
+
+###### Experimento Composto ( três experimentos )
+
+Vamos supor que o experimento seja composto de **três experimentos**, qual sejam (A) jogar um dado de 6 faces, (B) jogar uma moeda e (C) retirar uma bola de uma urna contendo quatro bolas (preto, azul, verde, vermelha).
+
+1. Construímos a matriz de possibilidades entre o 1º e 2º experimentos:
+
+```{r echo=FALSE}
+tab1 <- data.frame(JogarDado = paste("Face", 1:6), "ExperimentoB(C)" = paste("(",1:6,",","C",")"), "ExperimentoB(K)" = paste("(",1:6,",","K",")"));
+
+kbl(tab1, caption="Matriz de possibilidades com os resultados possíveis entre o 1º e 2º experimentos", booktabs = TRUE) %>%
+footnote(general_title = "Fonte: ", footnote_as_chunk = TRUE,general = "Paiva (2004, pág. 155)") %>%
+kable_styling(latex_options = "striped");
+```
+
+2. Listar os resultados possíveis da matriz de possibilidades:
+
+```{r echo=FALSE}
+listaLinhasE1_2 <- data.frame(Resultados=c(paste("(",1:6,",","C",")"),paste("(",1:6,",","K",")")));
+listaLinhasE1_2 %>%
+kbl(caption="Lista de Resultados do Experimento - Jogar um dado de 6 faces e jogar uma moeda", booktabs = TRUE) %>%
+footnote(general_title = "Fonte: ", footnote_as_chunk = TRUE,general = "Paiva (2004, pág. 154)") %>%
+kable_styling(latex_options = "striped");
+```
+
+3. Listar os resultados possíves do 3º subexperimento (Retirar bola de urna)
+
+```{r echo=FALSE}
+listaColunasE3 <- data.frame(RetirarBolaDeUrna = c("Bola preta","Bola azul","Bola amarela","Bola vermelha"));
+
+listaColunasE3 %>%
+kbl(caption="Lista de Resultados do Experimento - Retirar uma bola de uma urna contendo quatro bolas (preto, azul, amarela, vermelha).", booktabs = TRUE) %>%
+footnote(general_title = "Fonte: ", footnote_as_chunk = TRUE,general = "Paiva (2004, pág. 154)") %>%
+kable_styling(latex_options = "striped");
+```
+
+4. Construir uma matriz com **n** linhas da lista do item 2 por **k** colunas da lista do item 3
+
+```{r echo=FALSE}
+#listaLinhasE1_2 <- data.frame(ResultadosExperimentos1E2=c(paste("(",1:6,",","C",")"),paste("(",1:6,",","K",")")));
+
+listaLinhasE1_2 <- data.frame(ResultadosExperimentos1E2=c("(1, C)","(1, K)","(2, C)","(2, K)","(3, C)","(3, K)", "(4, C)","(4, K)","(5, C)","(5, K)","(6, C)","(6, K)"));
+
+listaLinhasE1_2$BolaAmarela <- c("(1, C, A)","(1, K, A)","(2, C, A)","(2, K, A)","(3, C, A)","(3, K, A)", "(4, C, A)","(4, K, A)","(5, C, A)","(5, K, A)","(6, C, A)","(6, K, A)");
+
+listaLinhasE1_2$BolaVerde <- c("(1, C, V)","(1, K, V)","(2, C, V)","(2, K, V)","(3, C, V)","(3, K, V)", "(4, C, V)","(4, K, V)","(5, C, V)","(5, K, V)","(6, C, V)","(6, K, V)");
+
+listaLinhasE1_2$BolaPreta <- c("(1, C, P)","(1, K, P)","(2, C, P)","(2, K, P)","(3, C, P)","(3, K, P)", "(4, C, P)","(4, K, P)","(5, C, P)","(5, K, P)","(6, C, P)","(6, K, P)");
+
+listaLinhasE1_2$BolaBranca <- c("(1, C, B)","(1, K, B)","(2, C, B)","(2, K, B)","(3, C, B)","(3, K, B)", "(4, C, B)","(4, K, B)","(5, C, B)","(5, K, B)","(6, C, B)","(6, K, B)");
+
+listaLinhasE1_2 %>%
+kbl(caption="Lista de Resultados do Experimento - Jogar um dado de 6 faces e jogar uma moeda", booktabs = TRUE) %>%
+footnote(general_title = "Fonte: ", footnote_as_chunk = TRUE,general = "Paiva (2004, pág. 154)") %>%
+kable_styling(latex_options = "striped");
+```
+
+5. Repetir os procedimentos de 1 a 4, caso hajam mais experimentos (4º, 5º, 6º, etc.)
+
+
+##### Árvore de Possibilidades
+
+Podemos demonstrar todos os resultados possíveis de um experimento através de uma árvore de possibilidades.
+
+
+```{r echo=FALSE}
+DiagrammeR::grViz("
+digraph dot {
+
+graph [layout = dot,
+       rankdir = LR]
+
+node [shape = circle,
+      style = filled,
+      color = grey,
+      label = '']
+
+node [fillcolor = red]
+a [label='Experimento:\\n(A)Jogar um dado\\ne\\n(B) Jogar uma moeda',
+   fontsize=16,width=0.6
+  ]
+
+node [fillcolor = green]
+b [label='1']
+c [label='2']
+d [label='3']
+e [label='4']
+f [label='5']
+g [label='6']
+
+node [fillcolor = palegreen]
+h [label='C']
+i [label='K']
+j [label='C']
+k [label='K']
+l [label='C']
+m [label='K']
+n [label='C']
+o [label='K']
+p [label='C']
+q [label='K']
+r [label='C']
+s [label='K']
+
+node [fillcolor = gray]
+aa [label='(1, C)']
+ab [label='(1, K)']
+ac [label='(2, C)']
+ad [label='(2, K)']
+ae [label='(3, C)']
+af [label='(3, K)']
+ag [label='(4, C)']
+ah [label='(4, K)']
+ai [label='(5, C)']
+aj [label='(5, K)']
+ak [label='(6, C)']
+al [label='(6, K)']
+
+edge [color = grey]
+a -> {b c d e f g}
+b -> {h i}
+c -> {j k}
+d -> {l m}
+e -> {n o}
+f -> {p q}
+g -> {r s}
+h -> {aa}
+i -> {ab}
+j -> {ac}
+k -> {ad}
+l -> {ae}
+m -> {af}
+n -> {ag}
+o -> {ah}
+p -> {ai}
+q -> {aj}
+r -> {ak}
+s -> {al}
+}")
+```
+
+### Generalização do Princípio Fundamental da Contagem
+
+Se os experimentos $A_{1}, A_{2}, A_{3}, ..., A_{k}$ apresentam como número de resultados possíveis, respectivamente, $n_{1}, n_{2}, n_{3}, ..., n_{k}$, então o **experimento composto** $A_{1}, A_{2}, A_{3}, ..., A_{k}$, nessa ordem, apresenta $n_{1} \times n_{2} \times n_{3} \times ... \times n_{k}$ resultados possíveis.
+
+### Exercícios {-}
+
+
+
+## Capítulo 22 - Princípio aditivo da contagem
+
+### Subseção Numerada 1
+
+Lorem ipsum. Lorem ipsum. Lorem ipsum. Lorem ipsum. Lorem ipsum. Lorem ipsum. Lorem ipsum. Lorem ipsum. Lorem ipsum. Lorem ipsum. Lorem ipsum. Lorem ipsum. Lorem ipsum. Lorem ipsum. Lorem ipsum. Lorem ipsum. Lorem ipsum. Lorem ipsum. Lorem ipsum.
+
+### Exercícios do Capítulo 22
+
+Lorem ipsum. Lorem ipsum. Lorem ipsum. Lorem ipsum. Lorem ipsum. Lorem ipsum. Lorem ipsum. Lorem ipsum. Lorem ipsum. Lorem ipsum. Lorem ipsum. Lorem ipsum. Lorem ipsum. Lorem ipsum. Lorem ipsum. Lorem ipsum. Lorem ipsum. Lorem ipsum. Lorem ipsum.
+
+### Seção não Numerada 3 {-}
+
+Lorem ipsum. Lorem ipsum. Lorem ipsum. Lorem ipsum. Lorem ipsum. Lorem ipsum. Lorem ipsum. Lorem ipsum. Lorem ipsum. Lorem ipsum. Lorem ipsum. Lorem ipsum. Lorem ipsum. Lorem ipsum. Lorem ipsum. Lorem ipsum. Lorem ipsum. Lorem ipsum. Lorem ipsum.
+
+## Capítulo 23 - Arranjo simples
+
+### Subseção Numerada 1
+
+Lorem ipsum. Lorem ipsum. Lorem ipsum. Lorem ipsum. Lorem ipsum. Lorem ipsum. Lorem ipsum. Lorem ipsum. Lorem ipsum. Lorem ipsum. Lorem ipsum. Lorem ipsum. Lorem ipsum. Lorem ipsum. Lorem ipsum. Lorem ipsum. Lorem ipsum. Lorem ipsum. Lorem ipsum.
+
+### Exercícios do Capítulo 23
+
+Lorem ipsum. Lorem ipsum. Lorem ipsum. Lorem ipsum. Lorem ipsum. Lorem ipsum. Lorem ipsum. Lorem ipsum. Lorem ipsum. Lorem ipsum. Lorem ipsum. Lorem ipsum. Lorem ipsum. Lorem ipsum. Lorem ipsum. Lorem ipsum. Lorem ipsum. Lorem ipsum. Lorem ipsum.
+
+### Seção não Numerada 3 {-}
+
+Lorem ipsum. Lorem ipsum. Lorem ipsum. Lorem ipsum. Lorem ipsum. Lorem ipsum. Lorem ipsum. Lorem ipsum. Lorem ipsum. Lorem ipsum. Lorem ipsum. Lorem ipsum. Lorem ipsum. Lorem ipsum. Lorem ipsum. Lorem ipsum. Lorem ipsum. Lorem ipsum. Lorem ipsum.

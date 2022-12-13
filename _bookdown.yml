@@ -1,4 +1,4 @@
-book_filename: "Bookdown-NOME-DO-PRODUTO"
+book_filename: "Bookdown-Resumos-de-Matematica-2"
 delete_merged_file: true
 output_dir: "docs"
 language:
@@ -6,3 +6,5 @@ language:
     chapter_name: "Capítulo "
   label:
     fig: "Figura "
+    tab: "Tabela "
+    not: "Nota "

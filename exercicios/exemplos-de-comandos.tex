@@ -1,0 +1,131 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[top=2cm, bottom=2cm, left=2.5cm, right=2.5cm]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage[brazil]{babel}
+\usepackage{amsmath, amsfonts, amssymb}
+\usepackage{pifont}
+\DeclareMathOperator{\sen}{sen}
+\DeclareMathOperator{\tg}{tg}
+\newcommand{\limite}{\displaystyle\lim}
+\newcommand{\integral}{\displaystyle\int}
+\newcommand{\somatorio}{\displaystyle\sum}
+
+\begin{document}
+
+\title{Vários Exemplos de Comandos em \LaTeX}
+\author{Daniel de Lima Claudino}
+\maketitle 
+
+\begin{itemize}
+  \item[R3] Quantos números naturais de três algarismos \textbf{distintos} podem ser formados com os algarismos $A = \{1, 2, 6, 8, 9\}$ ?
+   \begin{itemize}
+    \item[\ding{172}] \textbf{O que contar?:} Quantos números naturais de três algarismos \textbf{distintos} podem ser formados com os algarismos dados.
+    \item[\ding{173}] \textbf{Restrições:} Os números escolhidos em cada experimento devem ser distintos.
+    \item[\ding{174}] \textbf{Experimento 1:} $E_1$ = Preencher a posição das unidades com um dos algarismos dados.\\ Sendo $n_{1}$ o número de resultados possíveis do \textbf{experimento 1}, $n_{1}$ possui $n(A)$ resultados possíveis, ou seja, $n_{1} = n(A) = 5$.
+    \item[\ding{175}] \textbf{Experimento 2:} $E_2$ = Preencher a posição das dezenas com um dos algarismos dados.\\ Sendo $n_{2}$ o número de resultados possíveis do \textbf{experimento 2}, $n_{2}$ possui $n(A)-1$ resultados possíveis,pois um dos algarismos já foi escolhido no experimento 1, ou seja, $n_{2} = n(A)-1 = 5 - 1 = 4$.
+    \item[\ding{176}] \textbf{Experimento 3:} $E_3$ = Preencher a posição das centenas com um dos algarismos dados.\\ Sendo $n_{3}$ o número de resultados possíveis do \textbf{experimento 3}, $n_{3}$ possui $n(A)-2$ resultados possíveis,pois um dos algarismos já foi escolhido no \textbf{experimento 1} e outro no \textbf{experimento 2}, ou seja, $n_{2} = n(A) - 2 = 5 - 2 = 3$.   
+    \item[\ding{177}] \textbf{Cálculo:} Pelo princípio fundamental da contagem (PFC), os experimentos 1, 2 e 3 apresentam, respectivamente, $n_{1},\, n_{2} \textrm{ e } n_{3}$ resultados possíveis, logo o experimento composto 1, 2 e 3 possuem, nessa ordem, $n_{1} \times n_{2} \times n_{3}$ ou $5 \times 4 \times 3 = 60$ resultados possíveis.
+    \item[\ding{178}] \textbf{Conclusão:} Podemos formar \textbf{60 números naturais de três algarismos distintos} com os números dados.
+  \end{itemize}
+\end{itemize}
+
+Calcule para as funções $f(x) : \mathbb{R} \to \mathbb{R}$
+
+\begin{enumerate}
+  \item $\limite_{x \to 1} \dfrac{x^2-1}{x-1}$
+  \item $\integral_2^6 x^2\cos 2x\, dx$
+\end{enumerate}
+
+Calcule a soma $\somatorio_{i=1}^{n-1}=(x_i + \overline{x})^2$
+
+
+Seja o segmento $\overline{AB}$. Podemos definir os segmentos orientados $\vec{u} = \overrightarrow{AB}$ e $\vec{v} = \overrightarrow{BA}$. Calcule:
+\begin{enumerate}
+  \item $\langle \vec{u},\, \vec{v} \rangle$
+  \item $|\vec{u}|$
+  \item $\|\vec{v}\|$
+  \item $\|\overrightarrow{AB}\|$   ( Forma errada )
+  \item $\left\|\overrightarrow{AB}\right\|$
+  \item $\vec{u} \perp \vec{v}$
+\end{enumerate}
+
+
+Considere a matriz M de $n$ linhas por $k$ colunas:
+
+$$
+M_{n \times k}= 
+\begin{bmatrix}
+a_{11} & a_{12} & a_{13} & \cdots & a_{1k} \\
+a_{21} & a_{22} & a_{23} & \cdots & a_{2k} \\
+\vdots & \vdots & \vdots & \ddots & \vdots \\
+a_{n1} & a_{n2} & a_{n3} & \cdots & a_{nk} \\
+\end{bmatrix}
+$$
+  
+  
+Determine $x$, $y$ e $z$ na equação:
+
+$$
+\begin{bmatrix}
+  1 & -2 &  4 \\
+  5 &  2 & -2 \\
+  6 &  1 &  8 \\  
+\end{bmatrix}
+\begin{bmatrix}
+x \\ y \\ z
+\end{bmatrix}
+=
+\begin{bmatrix}
+ 2 \\ 10 \\ 6
+\end{bmatrix}
+$$
+ 
+Considere a matriz:
+
+$$M = 
+\begin{bmatrix}
+  1 & 5 & 3 \\
+  7 & -8 & 0 \\
+  1 & 3 & 2 \\
+\end{bmatrix} \times
+\begin{bmatrix}
+  1 & 5 & 3 \\
+  7 & -8 & 0 \\
+  1 & 3 & 2 \\
+\end{bmatrix}
+$$
+  
+ 
+Seja a função:
+$$ f : \mathbb{R}_{+} \to \mathbb{R}\textrm{, tal que:}$$
+$$ f(x) = 
+ \begin{cases}
+ \sen\left(x - \dfrac{\pi}{2}\right) \textrm{, se }\,x \in \left] -\dfrac{\pi}{2} ; \dfrac{\pi}{2}\right] \\
+ \tg{3x + 1}\textrm{, se }\,0 < x < 10 \\ 
+ \tg{3x + 1}\textrm{, se }\,0 < x < 10 \\ 
+ \dfrac{\log_2{x^3}}{3x + 1}\textrm{, se }\,x \leq 0 \\ 
+ \end{cases}
+$$
+Informe o $D(f)$:  
+  
+  
+Seja a função:
+$$ f : \mathbb{R}_{+} \to \mathbb{R}\textrm{, tal que:}$$
+$$ f(x) = 
+ \begin{cases}
+ 3x^2 + 3x + 4\textrm{, se }\,x \geq 10 \\
+ 4x^{3x + 1}\textrm{, se }\,0 < x < 10 \\ 
+ \dfrac{x^3}{3x + 1}\textrm{, se }\,x \leq 0 \\ 
+ \end{cases}
+$$
+Informe o $D(f)$:
+
+  
+  \begin{itemize}
+    \item[\ding{51}] Alguma coisa.
+    \item[\ding{52}] Alguma coisa.
+    \item[\ding{53}] Alguma coisa.        
+  \end{itemize}
+
+
+\end{document}
