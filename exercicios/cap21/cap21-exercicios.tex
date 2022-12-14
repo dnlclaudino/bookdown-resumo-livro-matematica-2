@@ -8,6 +8,7 @@
 \usepackage{times} % Para usar a fonte Times New Roman no documento inteiro
 \usepackage{graphicx} % Para incluir no documento figuras
 \usepackage{float}
+\usepackage{caption} % Pacote para Legenda em figuras e tabelas ( Para acescentar "Fonte" e notas nas figuras e tabelas )
 
 \begin{document}
 
@@ -183,6 +184,38 @@ Fonte:\href{https://infinittusexatas.com.br/analise-combinatoria-resumos-e-mapas
     Um outra forma, mais genérica e rápida, de constatar que 72 possui 12 divisores é descobrir de quantas maneiras, no produto $2^{\{0..3\}} \times 3^{\{0..2\}} $, com $x \in \{0,1,2,3\}$ e $y \in \{0,1,2\}$, eu posso preencher o expoente do 2 e o expoente do 3. \\Percebe-se que, tal qual respondemos nas questões anteriores, pelo princípio fundamental da contagem (PFC), temos dois experimentos: $E_1 =$ Preencher o expoente do 2 e $E_2 =$ Preencher o expoente do 3. Sendo $n_{1}$ o número de resultados possíveis do experimento $E_1$ e $n_{2}$ o número de resultados possíveis do experimento $E_2$, temos que pelo PFC, o experimento composto $E_1$ e $E_2$, nessa ordem, apresenta $n_{1} \times n_{2}$ resultados possíveis, ou seja $4 \times 3 = 12$ números (divisores).
        
     \item[\ding{178}] \textbf{Conclusão:} O número 72 possui 12 divisores naturais
+  \end{itemize}
+  
+\item[\textbf{R6}] Quantos subconjuntos possui o conjunto $A = \{a,b,c,d\}$?
+
+    \begin{figure}[htb]
+      \centering
+      \caption{Os elementos dos subconjuntos do conjunto A}
+      \includegraphics[scale=0.8]{../../imagens/geogebra-cap21-exercicios-R6-pag158.png}
+      \caption*{Fonte: Autor}
+      \label{geogebra-cap21-exercicios-R6-pag158}
+    \end{figure}
+
+
+   \begin{itemize}
+    \item[\ding{172}] \textbf{O que contar?:} Quantos subconjuntos possui o conjunto A.
+
+    
+    
+    \item[\ding{173}] \textbf{Restrições do(s) Experimento(s):} Nenhum.
+    
+    \item[\ding{174}] \textbf{Experimento:} trata-se de um experimento composto de vários experimentos, conforme explicitamos abaixo.
+      \begin{itemize}
+          \item[\ding{172}] \textbf{$E_1$} Escolher se o \textbf{1º} elemento do conjunto de A, "a", será ou não escolhido. Esse experimento possui $n(E_1) = 2$ resultados possíveis (presente ou não presente).
+          \item[\ding{173}] \textbf{$E_1$} Escolher se o \textbf{2º} elemento do conjunto de A, "b", será ou não escolhido. Esse experimento possui $n(E_2) = 2$ resultados possíveis (presente ou não presente)
+          \item[\ding{174}] \textbf{$E_1$} Escolher se o \textbf{3º} elemento do conjunto de A, "c", será ou não escolhido. Esse experimento possui $n(E_3) = 2$ resultados possíveis (presente ou não presente)
+          \item[\ding{175}] \textbf{$E_1$} Escolher se o \textbf{4º} elemento do conjunto de A, "d", será ou não escolhido. Esse experimento possui $n(E_4) = 2$ resultados possíveis (presente ou não presente)
+      \end{itemize}
+    
+    \item[\ding{175}] \textbf{Cálculo:} Pelo princípio fundamental da contagem (PFC), os experimentos 1, 2, 3 e 4 apresentam, respectivamente, $n_{1},\, n_{2},\, n_{3} \textrm{ e } n_{4}$ resultados possíveis, logo o experimento composto 1, 2, 3 e 4 possuem, nessa ordem, $n_{1} \times n_{2} \times n_{3} \times n_{4}$ ou $2 \times 2 \times 2 \times 2 = 16$ resultados possíveis.
+    
+    \item[\ding{178}] \textbf{Conclusão:} Podemos formar \textbf{16 subconjuntos de A, incluindo o conjunto vazio}.
+    
   \end{itemize}
 
 \end{enumerate}
