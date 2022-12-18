@@ -3,6 +3,8 @@
 .RData
 .Ruserdata
 *.aux
+*.bbl
+*.blg
 *.log
 *.lot
 *.lof
