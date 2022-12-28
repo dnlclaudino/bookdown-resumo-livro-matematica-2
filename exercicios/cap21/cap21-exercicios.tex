@@ -417,15 +417,17 @@ Fonte:\href{https://infinittusexatas.com.br/analise-combinatoria-resumos-e-mapas
 
 \begin{enumerate}
 
-\item[\textbf{C1}] Quantas funções bijetoras têm domínio $A = \{1, 2, 3, 4 \}$ e contradomínio $B = \{5, 6, 7, 8 \}$? 
+\item[\textbf{C1}] Quantas funções bijetoras têm domínio $A = \{1, 2, 3, 4 \}$ e contradomínio $B = \{5, 6, 7, 8 \}$?
 
-A função bijetora, também chamada bijetiva, é um tipo de função matemática que relaciona cada elemento do domínio A, a um elemento diferente no contradomínio B.
+\begin{center}
+{\large \textbf{Discussão Conceitual Sobre Funções Bijetoras}}
+\end{center}
+
+A função bijetora, também chamada bijetiva, é um tipo de função matemática que relaciona cada elemento do domínio A a um elemento diferente no contradomínio B.
 
 Além disto, todo elemento do contradomínio B é imagem de A.
                              $$CD (f) = Im(f)$$
-Todo elemento de B recebe uma única flecha de A. Não sobre elementos no contradomínio B (correspondência biunívoca).
-
-Importante notar que eles apresentam o mesmo número de elementos.
+Em resumo, todo elemento de B recebe uma única flecha de A (\textbf{função injetora}). Não sobra elementos no contradomínio B (\textbf{função sobrejetora}). A correspondência entre os elementos dos dois conjuntos é biunívoca\footnote{Importante notar que o \textbf{domínio} e o \textbf{contradomínio} apresentam \textbf{\underline{o mesmo número de elementos}}}.
 
    \begin{figure}[!htb]
       \centering
@@ -435,7 +437,7 @@ Importante notar que eles apresentam o mesmo número de elementos.
       \label{cap21-exercicios-C1-pag160-1}
     \end{figure}
     
-Para saber quantas funções bijetoras poderemos formar, considere a figura \ref{cap21-exercicios-C1-pag160-2}
+Vamos descobrir \textbf{quantas funções bijetoras poderemos formar}. Para isso, considere a figura \ref{cap21-exercicios-C1-pag160-2}
 
    \begin{figure}[!htb]
       \centering
@@ -444,11 +446,28 @@ Para saber quantas funções bijetoras poderemos formar, considere a figura \ref
       \caption*{Fonte: Autor}
       \label{cap21-exercicios-C1-pag160-2}
     \end{figure}
+
+\newpage    
+    
+\begin{center}
+{\large \textbf{Resolução da Questão}}
+\end{center}    
    
    \begin{itemize}
-     \item[\ding{172}] \textbf{O que contar?} Tratam-se de 4 experimentos. Para cada elemento do domínio $\{1,2,3,4\}$ , deve-se escolher, dentre os elementos disponíveis do contradomínio $\{5,6,7,8\}$, outro elemento de forma que a função seja bijetora (restrição).
-     \item[\ding{173}] \textbf{Restrição:} Para cada elemento do domínio $\{1,2,3,4\}$ , deve-se escolher, dentre os elementos disponíveis do contradomínio $\{5,6,7,8\}$, outro elemento de forma que a função seja bijetora (restrição).
-     \item[\ding{174}] \textbf{Experimento 1:} $E_1$ = Para o primeiro elemento do domínio "1" em $A$, devemos escolher um elemento do contradomínio em $B$ de forma a respeitar a restrição do enununciado da questão.
+     \item[\ding{172}] \textbf{O que contar?} Quantas funções bijetoras poderemos formar.
+    \item[\ding{173}] \textbf{Restrições do(s) Experimento(s):} A função deve ser bijetora.
+        \begin{enumerate}[a)]
+          \item Cada elemento do domínio A só pode ser levado a um elemento do contradomínio B (Para ser uma relação do tipo função)
+          \item Cada elemento do contradomínio B só pode estar ligado a um elemento do domínio A ( função injetora )
+          \item Não pode sobrar elementos no contradomínio B ( função sobrejetora )          
+        \end{enumerate}      
+     \item[\ding{174}] \textbf{Experimento 1:} $E_1$ = Para o primeiro elemento do domínio "1" em $ A$, devemos escolher um elemento do contradomínio em $B$ de forma a respeitar a restrição do enununciado da questão. Essa escolha gera $n_1 = 4$ possibilidades de escolha no contradomínio.
+     \item[\ding{175}] \textbf{Experimento 2:} $E_2$ = Para o segundo elemento do domínio "2" em $ A$, devemos escolher um elemento do contradomínio em $B$ de forma a respeitar a restrição do enununciado da questão. Essa escolha gera $n_2 = 3$ possibilidades de escolha no contradomínio, pois um elemento já foram escolhida no $E_1$.
+     \item[\ding{176}] \textbf{Experimento 3:} $E_3$ = Para o terceiro elemento do domínio "3" em $ A$, devemos escolher um elemento do contradomínio em $B$ de forma a respeitar a restrição do enununciado da questão. Essa escolha gera $n_3 = 2$ possibilidades de escolha no contradomínio, pois dois elementos já foram escolhidos no $E_1 \textrm{ e } E_2$.
+     \item[\ding{177}] \textbf{Experimento 4:} $E_4$ = Para o quarto elemento do domínio "4" em $ A$, devemos escolher um elemento do contradomínio em $B$ de forma a respeitar a restrição do enununciado da questão. Essa escolha gera $n_4 = 1$ possibilidade de escolha no contradomínio, pois três elementos já foram escolhidos no $E_1 \textrm{ e } E_2 \textrm{ e } E_3$.
+         \item[\ding{176}] \textbf{Cálculo:} Pelo princípio fundamental da contagem (PFC), o experimento $E_1$ possui $n_1$ resultados possíveis, o experimento $E_2$ possui $n_2$ resultados possíveis, o experimento $E_3$ possui $n_3$ resultados possíveis e o experimento $E_4$ possui $n_4$ resultados possíveis, logo o experimento composto $E_1, E_2, E_3 \textrm{ e } E_4$, nessa ordem, apresenta $n_1 \times n_2 \times n_3 \times n_4$ resultados possíveis, ou seja, $4 \times 3 \times 2 \times 1 = 24$ resultados possíveis.
+    \item[\ding{177}] \textbf{Conclusão:} Podemos formar 24 funções bijetoras com os conjuntos A e B (domínio e contradomínio, respectivamente).
+
    \end{itemize}  
     
 
